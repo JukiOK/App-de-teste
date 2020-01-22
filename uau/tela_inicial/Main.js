@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-
+import InputDate from '../input_date/InputDate.js'
 import {
   StyleSheet, ScrollView, View, Text, StatusBar, Image, TextInput, Button, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback,
   FlatList
@@ -26,29 +26,24 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: "white",
     backgroundColor: headerColor,
-  }
+  },
 });
-
-function Oi(props){
-  return (
-    <View style={{alignItems: 'center', width: 50, height: 50, backgroundColor: "powderblue"}}>
-      <Text>{props.text}</Text>
-    </View>
-  )
-}
-
-function Main(props) {
-
+function Main(props, {navigation}) {
   const [bla, setBla] = useState('');
   return(
     <View style={styles.baseScreen}>
       <Image source={src} style={styles.image}/>
       <StatusBar backgroundColor={headerColor}/>
-      <View style={{flex: 1}}>
+      <View style={{flex:1}}>
         <Text style={styles.title}>Gerador de apelido para sinuca</Text>
       </View>
+      <InputDate />
     </View>
   )
 }
+
+Main.navigationOptions = {
+  headerShown: false,
+};
 
 export default Main
