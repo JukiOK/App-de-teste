@@ -29,7 +29,6 @@ import {
 
 const MainNavigator = createStackNavigator({
   Home: {screen: Main},
-  Bla: {screen: Main},
 });
 
 const AppContainer = createAppContainer(MainNavigator);

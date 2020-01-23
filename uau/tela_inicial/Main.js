@@ -28,13 +28,13 @@ const styles = StyleSheet.create({
     backgroundColor: headerColor,
   },
 });
-function Main(props, {navigation}) {
+const Main = (props, {navigation}) => {
   const [bla, setBla] = useState('');
   return(
     <View style={styles.baseScreen}>
       <Image source={src} style={styles.image}/>
       <StatusBar backgroundColor={headerColor}/>
-      <View style={{flex:1}}>
+      <View style={{flex:0}}>
         <Text style={styles.title}>Gerador de apelido para sinuca</Text>
       </View>
       <InputDate />
