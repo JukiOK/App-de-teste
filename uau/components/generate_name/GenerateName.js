@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   btnGerar: {
     backgroundColor: "#ff1a5a",
     alignItems: "center",
-    width: "60%",
+    width: "40%",
     padding: 10,
     borderRadius: 10,
   }

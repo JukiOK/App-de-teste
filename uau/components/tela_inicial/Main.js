@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: "white",
     backgroundColor: headerColor,
+    padding: 10,
   },
 });
 const Main = (props) => {

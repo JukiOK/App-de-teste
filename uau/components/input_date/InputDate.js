@@ -31,23 +31,38 @@ const styles = StyleSheet.create({
     width: "40%",
     padding: 10,
     borderRadius: 10,
+  },
+  errorText: {
+    color: "#ff9191",
+    fontSize: 15,
   }
 });
 
 function InputDate(props) {
   const [date, setDate] = useState("");
-
+  const [displayError, setDisplayError] = useState(false);
   function handleGenerate(){
-    props.dispatchNiverDate(date);
-    props.navigation.navigate('GenerateName');
+    if(dateTime.isValid()){
+      setDisplayError(false);
+      props.dispatchNiverDate(date);
+      props.navigation.navigate('GenerateName');
+    }else{
+       setDisplayError(true);
+    }
   }
+
+  let dateTime;
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
         Insira sua data de aniversário:
       </Text>
-      <TextInputMask style={styles.input} options={{format: 'DD/MM'}} type={'datetime'} value={date} onChangeText={text => setDate(text)}/>
+      {
+        displayError &&
+        <Text style={styles.errorText}>Insira uma data válida</Text>
+      }
+      <TextInputMask style={styles.input} options={{format: 'DD/MM'}} type={'datetime'} value={date} onChangeText={text => setDate(text)} ref={(ref) => dateTime = ref}/>
       <TouchableHighlight style={styles.btnGerar} underlayColor="#c7004a" onPress={() => handleGenerate()} activeOpacity={0.8}>
         <View>
           <Text style={styles.text}>Gerar</Text>
