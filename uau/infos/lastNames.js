@@ -5,8 +5,8 @@ export default {
   4: "Demais",
   5: "de Araçatuba",
   6: "de Pindamonhangaba",
-  7: "Alface",
-  8: "Cavalo",
+  7: "de Alface",
+  8: "de Cavalo",
   9: "Quântico",
   10: "de Madureira",
   11: "Cabuloso/a",
@@ -16,5 +16,5 @@ export default {
   15: "Pineapple",
   16: "Ninja",
   17: "Stark",
-  18: "Égua",
+  18: "de Égua",
 }

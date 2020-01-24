@@ -9,7 +9,8 @@
  import {createStackNavigator} from 'react-navigation-stack';
 
 import React from 'react';
-import Main from './tela_inicial/Main.js'
+import Main from './components/tela_inicial/Main.js'
+import GenerateNameContainer from './container/GenerateNameContainer.js'
 import {
   SafeAreaView,
   StyleSheet,
@@ -17,6 +18,7 @@ import {
   View,
   Text,
   StatusBar,
+  ImageBackground,
 } from 'react-native';
 
 import {
@@ -27,19 +29,48 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const MainNavigator = createStackNavigator({
-  Home: {screen: Main},
-});
+import {createStore} from 'redux';
+import reducers from './redux/reducers';
+import {Provider} from 'react-redux';
 
-const AppContainer = createAppContainer(MainNavigator);
+const headerColor = "#01172f";
+
+const MainNavigator = createStackNavigator(
+  {
+    Home: {screen: Main},
+    GenerateName: {screen: GenerateNameContainer},
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+          backgroundColor: headerColor,
+        },
+        headerTintColor: '#fff',
+    }
+  }
+);
+
+const AppContainer = createAppContainer(MainNavigator)
+
+let store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const App = () => {
   return (
-    <AppContainer />
+    <Provider store={store}>
+      <View style={styles.baseScreen}>
+        <StatusBar backgroundColor={headerColor}/>
+        <AppContainer />
+      </View>
+    </Provider>
   );
 };
 
 const styles = StyleSheet.create({
+
+  baseScreen: {
+    flex: 1,
+    flexDirection: "column",
+  },
 
 });
 

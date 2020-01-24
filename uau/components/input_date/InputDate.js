@@ -36,13 +36,19 @@ const styles = StyleSheet.create({
 
 function InputDate(props) {
   const [date, setDate] = useState("");
+
+  function handleGenerate(){
+    props.dispatchNiverDate(date);
+    props.navigation.navigate('GenerateName');
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
         Insira sua data de aniversário:
       </Text>
       <TextInputMask style={styles.input} options={{format: 'DD/MM'}} type={'datetime'} value={date} onChangeText={text => setDate(text)}/>
-      <TouchableHighlight style={styles.btnGerar} underlayColor="black" onPress={() => alert("click")} activeOpacity={0.3}>
+      <TouchableHighlight style={styles.btnGerar} underlayColor="#c7004a" onPress={() => handleGenerate()} activeOpacity={0.8}>
         <View>
           <Text style={styles.text}>Gerar</Text>
         </View>
