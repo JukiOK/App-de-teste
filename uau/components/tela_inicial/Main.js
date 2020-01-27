@@ -32,6 +32,7 @@ const Main = (props) => {
 
 Main.navigationOptions = {
   headerShown: false,
+  title: 'Gerador de apelido',
 };
 
 export default Main

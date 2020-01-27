@@ -5,11 +5,13 @@
  * @format
  * @flow
  */
- import {createAppContainer} from 'react-navigation';
+ import {createAppContainer, StackNavigator} from 'react-navigation';
  import {createStackNavigator} from 'react-navigation-stack';
+ import {createDrawerNavigator} from 'react-navigation-drawer'
 
 import React from 'react';
 import Main from './components/tela_inicial/Main.js'
+import Home from './components/tela_inicial/Home.js'
 import GenerateNameContainer from './container/GenerateNameContainer.js'
 import {
   SafeAreaView,
@@ -35,10 +37,10 @@ import {Provider} from 'react-redux';
 
 const headerColor = "#01172f";
 
-const MainNavigator = createStackNavigator(
+const Stack = createStackNavigator(
   {
-    Home: {screen: Main},
-    GenerateName: {screen: GenerateNameContainer},
+    Main: {screen: Main},
+    GenerateName: {screen: GenerateNameContainer}
   },
   {
     defaultNavigationOptions: {
@@ -46,6 +48,25 @@ const MainNavigator = createStackNavigator(
           backgroundColor: headerColor,
         },
         headerTintColor: '#fff',
+    }
+  }
+)
+
+Stack.navigationOptions = {
+  title: "Gerador de apelido"
+}
+
+const MainNavigator = createDrawerNavigator(
+  {
+    Home: {screen: Home},
+    GenerateName: {screen: Stack},
+  },
+  {
+    drawerBackgroundColor: '#000c19',
+    contentOptions: {
+      activeTintColor: '#ff1a5a',
+      activeBackgroundColor: '#f91a5859',
+      inactiveTintColor: '#fff',
     }
   }
 );
